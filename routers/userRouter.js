@@ -17,7 +17,7 @@ const jwt = require('jsonwebtoken')
 //* GET USERS
 router.get('/', async (req, res) => {
     try {
-        const users = await usersModel.find()
+        const users = await userModel.find()
         res.status(200).json(users)
     } catch (error) {
         console.log(error)
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 })
 
 // CREATE OR REGISTER A NEW USER
-router.post('/new', [
+router.post('/', [
     check('username', 'username is require from MIDDLEWARE').notEmpty(),
     check('email', 'Incorrect Email from MIDDLEWARE').isEmail(),
     check('password', 'Enter an email').notEmpty(),
