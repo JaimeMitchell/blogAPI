@@ -14,8 +14,18 @@ const bcrypt = require('bcrypt')
 // get the JWT (json web token)
 const jwt = require('jsonwebtoken')
 
+//* GET USERS
+router.get('/', async (req, res) => {
+    try {
+        const users = await usersModel.find()
+        res.status(200).json(users)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 // CREATE OR REGISTER A NEW USER
-router.post('/'[
+router.post('/new', [
     check('username', 'username is require from MIDDLEWARE').notEmpty(),
     check('email', 'Incorrect Email from MIDDLEWARE').isEmail(),
     check('password', 'Enter an email').notEmpty(),
@@ -24,7 +34,7 @@ router.post('/'[
         // ASSIGN THE REQUESTED BODY TO USERDATA
         const userData = req.body
 
-        // ? WHY IS VALIDATION RESULT THE VALUE OF ERROR??
+        // ? WHY IS VALIDATION RESULT THE VALUE OF ERROR?? Because we are trying to be specific about any errors the front-end users might not see.
         const errors = validationResult(req)
         //Check validation errors
         if (!errors.isEmpty()) {
@@ -73,8 +83,48 @@ router.post('/'[
             console.log(error)
             res.status(400).json('Bad request!!!!!')
         }
+
+
     })
+router.get('/:id', async (req, res) => {
+    const id = req.params.id
+    try {
+        const contacts = await contactsModel.findById(id)
+        res.status(204).json(contacts)
+    }
+    catch (error) {
+        console.log(error)
+    }
+})
+
+//UPDATE USER
+router.put('/:id', async (req, res) => {
+    const id = req.params.id
+    const newUsersData = req.body
+    try {
+        //find contact by id
+        const contact = await usersModel.findByIdAndUpdate(id, newUsersData, { new: true })
+        res.status(200).json({ msg: 'Contact was updated' })
+    }
+    catch (error) {
+        console.log(error)
+    }
+})
+
+//DELETE A CONTACT
+router.delete('/:id', async (req, res) => {
+    const id = req.params.id
+    try {
+        const users = await usersModel.findByIdAndDelete(id)
+        res.status(200).json({ msg: 'User was deleted!' })
+    }
+    catch (error) {
+        console.log(error)
+    }
+
+})
 
 // Export express router
 module.exports = router
+
 

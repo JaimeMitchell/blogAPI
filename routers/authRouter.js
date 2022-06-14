@@ -11,7 +11,7 @@ const bcrypt = require('bcrypt')
 // SET UP https://jwt.io/
 const jwt = require('jsonwebtoken')
 // Requiring only the user schema for password validation
-const UserModel = require('../models/usersSchema')
+const UserModel = require('../models/userSchema')
 
 //Don't fully understand where this posts to and how. Is it the root of Users?
 // EXPRESS-VALIDATION checks/.ismail().notEmpty()

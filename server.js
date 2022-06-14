@@ -18,6 +18,7 @@ const authRouter = require('./routers/authRouter')
 //USE MIDDLEWARE i need to research each one and leave a comment on each of them here.
 app.use(express.json())
 app.use(morgan('dev'))
+//hides security features, browser using and other info
 app.use(helmet())
 
 

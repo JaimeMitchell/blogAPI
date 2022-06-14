@@ -15,7 +15,7 @@ router.get('/', authMiddleware, async (req, res) => {
     }
 })
 // CREATE BLOGS
-router.post('/', authMiddleware, async (req, res) => {
+router.post('/new', authMiddleware, async (req, res) => {
     const blogData = req.body // gets the data from the request
     console.log(blogData);
     try {
@@ -40,7 +40,7 @@ router.get('/:id', authMiddleware, async (req, res) => {
     } catch (error) {
         console.error(error)
         res.status(400).json({
-            msg: 'Id not found'
+            msg: "Your blog ID can not found"
         })
     }
 })

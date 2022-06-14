@@ -20,18 +20,20 @@ const userSchema = mongoose.Schema({
                 year: {
                         type: Number
                 },
-                age: {
-                        type: Number
+        },
+        age: {
+                type: Number
 
-                },
-                password: {
-                        type: String,
-                        required: true
-                },
-                created_at: {
-                        type: Date,
-                        default: Date.now()
-                }
+
+        },
+        password: {
+                type: String,
+                required: true
+        },
+        created_at: {
+                type: Date,
+                default: Date.now()
         }
 })
-module.exports = mongoose.model('user', userSchema)
+
+module.exports = mongoose.model('users', userSchema)
