@@ -5,21 +5,21 @@ const blogSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    created_at: {
-        type: Date,
-        date: Date.now()
-    },
-    blog_title: {
+    title: {
         type: String,
         required: true
     },
-    blog_content: {
+    content: {
         type: String,
         required: true
     },
     private: {
         type: Boolean,
         required: true
+    },
+    created_at: {
+        type: Date,
+        date: Date.now()
     }
 })
 

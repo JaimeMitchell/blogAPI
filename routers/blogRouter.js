@@ -2,14 +2,23 @@
 const express = require('express')
 const router = express.Router()
 
-const blogRouter = require('../models/blogSchema')
+const blogModel = require('../models/blogSchema')
 const authMiddleware = require('../middleware/authMiddleware')
 
-//* GET BLOG
+// GET BLOG
 router.get('/', authMiddleware, async (req, res) => {
     try {
         const blog = await blogModel.find()
         res.status(200).json(blog)
+    } catch (error) {
+        console.log(error)
+    }
+})
+//FILTER PUBLIC BLOGS
+router.get('/public', authMiddleware, async (req, res) => {
+    try {
+        const public = await blogModel.find({ "private": "false" })
+        res.status(200).json(public)
     } catch (error) {
         console.log(error)
     }
@@ -59,16 +68,22 @@ router.put('/:id', authMiddleware, async (req, res) => {
     }
 })
 
-// DELETE A BLOG
+// DELETE A BLOG. I erased the unused variable const blog, but have it commented out on line 73
 router.delete('/:id', authMiddleware, async (req, res) => {
     const id = req.params.id
-
     try {
-        const blog = await blogModel.findByIdAndDelete(id)
+        await blogModel.findByIdAndDelete(id)
         res.status(200).json({ msg: 'Blog was deleted!' })
     } catch (error) {
         console.log(error);
     }
+
+    // try {
+    //     const blog = await blogModel.findByIdAndDelete(id)
+    //     res.status(200).json({ msg: 'Blog was deleted!' })
+    // } catch (error) {
+    //     console.log(error);
+    // }
 })
 
 module.exports = router

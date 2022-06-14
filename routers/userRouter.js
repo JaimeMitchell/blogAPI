@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 })
 
 // CREATE OR REGISTER A NEW USER
-router.post('/', [
+router.post('/new', [
     check('username', 'username is require from MIDDLEWARE').notEmpty(),
     check('email', 'Incorrect Email from MIDDLEWARE').isEmail(),
     check('password', 'Enter an email').notEmpty(),
