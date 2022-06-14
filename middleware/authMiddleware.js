@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
     const token = req.header('x-auth-token')
 
     // IF NO TOKEN IS DEFINED ABOVE
-    IF(!token) {
+    if (!token) {
         return res.json('NO TOKEN, ACCESS DENIED')
     }
     // IF WE HAVE A TOKEN PROCESS IT USING SECRET_KEY USING DOTENV (.env file)
@@ -20,7 +20,5 @@ module.exports = (req, res, next) => {
         console.log(error)
         res.status(400).json('TOKEN NOT VALID')
     }
-
-
 
 }

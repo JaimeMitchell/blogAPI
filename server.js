@@ -32,7 +32,7 @@ app.use('/auth', authRouter)
 //Routes HTTP GET requests to the specified path with the specified callback functions.
 app.get('/', (req, res) => {
     res.status(200).json({
-        message: 'API is up'
+        message: "API is up"
     })
 })
 app.listen(PORT, () => {
