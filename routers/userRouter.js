@@ -89,8 +89,8 @@ router.post('/new', [
 router.get('/:id', async (req, res) => {
     const id = req.params.id
     try {
-        const contacts = await contactsModel.findById(id)
-        res.status(204).json(contacts)
+        const user = await userModel.findById(id)
+        res.status(204).json(user)
     }
     catch (error) {
         console.log(error)
@@ -102,16 +102,16 @@ router.put('/:id', async (req, res) => {
     const id = req.params.id
     const newUsersData = req.body
     try {
-        //find contact by id
-        const contact = await usersModel.findByIdAndUpdate(id, newUsersData, { new: true })
-        res.status(200).json({ msg: 'Contact was updated' })
+        //find user by id
+        const user = await usersModel.findByIdAndUpdate(id, newUsersData, { new: true })
+        res.status(200).json({ msg: 'User was updated' })
     }
     catch (error) {
         console.log(error)
     }
 })
 
-//DELETE A CONTACT
+//DELETE A USER
 router.delete('/:id', async (req, res) => {
     const id = req.params.id
     try {
