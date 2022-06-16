@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
 
     // IF NO TOKEN IS DEFINED ABOVE
     if (!token) {
-        return res.json('NO TOKEN, ACCESS DENIED')
+        return res.json('NO TOKEN PRODUCED, ACCESS DENIED')
     }
     // IF WE HAVE A TOKEN PROCESS IT USING SECRET_KEY USING DOTENV (.env file)
     try {

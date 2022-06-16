@@ -1,3 +1,5 @@
+//AUTH ROUTER IS SPECIFICALLY FOR SIGN
+
 // SET UP EXPRESS
 const express = require('express')
 // SET UP EXPRESS-VALIDATOR NPM
@@ -51,7 +53,7 @@ router.post('/', [
             email: user.email
         }
         //WHAT is jwt.sign?
-        const TOKEN = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: "2 Days" })
+        const TOKEN = jwt.sign(payload, process.env.SECRET_KEY) //{ expiresIn: "2 Days" })
 
         res.status(201).json({
             user: user,

@@ -24,9 +24,9 @@ router.get('/', async (req, res) => {
     }
 })
 
-// CREATE OR REGISTER A NEW USER
+// ??? CREATE OR REGISTER A NEW USER, Why is .notEmpty producing an error message. The logic seems reversed and incorrect with all of these checks.
 router.post('/new', [
-    check('username', 'username is require from MIDDLEWARE').notEmpty(),
+    check('username', 'username is required from MIDDLEWARE').notEmpty(),
     check('email', 'Incorrect Email from MIDDLEWARE').isEmail(),
     check('password', 'Enter an email').notEmpty(),
     check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 })],
@@ -90,7 +90,7 @@ router.get('/:id', async (req, res) => {
     const id = req.params.id
     try {
         const user = await userModel.findById(id)
-        res.status(204).json(user)
+        res.status(200).json(user)
     }
     catch (error) {
         console.log(error)
@@ -103,8 +103,8 @@ router.put('/:id', async (req, res) => {
     const newUsersData = req.body
     try {
         //find user by id
-        const user = await usersModel.findByIdAndUpdate(id, newUsersData, { new: true })
-        res.status(200).json({ msg: 'User was updated' })
+        const user = await userModel.findByIdAndUpdate(id, newUsersData, { new: true })
+        res.status(200).json({ msg: 'user was updated' })
     }
     catch (error) {
         console.log(error)
@@ -115,8 +115,8 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const id = req.params.id
     try {
-        const users = await usersModel.findByIdAndDelete(id)
-        res.status(200).json({ msg: 'User was deleted!' })
+        const user = await userModel.findByIdAndDelete(id)
+        res.status(200).json({ msg: `${user} was deleted!` })
     }
     catch (error) {
         console.log(error)
