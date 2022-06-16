@@ -103,7 +103,7 @@ router.put('/:id', async (req, res) => {
     const newUsersData = req.body
     try {
         //find user by id
-        const user = await userModel.findByIdAndUpdate(id, newUsersData, { new: true })
+        await userModel.findByIdAndUpdate(id, newUsersData, { new: true })
         res.status(200).json({ msg: 'user was updated' })
     }
     catch (error) {
@@ -115,8 +115,9 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const id = req.params.id
     try {
-        const user = await userModel.findByIdAndDelete(id)
-        res.status(200).json({ msg: `${user} was deleted!` })
+        //find user by id and DELETE!
+        await userModel.findByIdAndDelete(id)
+        res.status(200).json({ msg: 'user was deleted' })
     }
     catch (error) {
         console.log(error)
