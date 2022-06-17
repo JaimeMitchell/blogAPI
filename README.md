@@ -1,5 +1,8 @@
 # blogAPI
+Deployed on Heroku:
+https://jaimeblogapi.herokuapp.com/
 
+# Project Description
 API that uses Json Web Token (JWT) authorization so user can authenticate across apps or micro-services. JWT stores authorization with the Client, NOT the Server. 
 
 The user must create a profile with password, which is then hashed using the bcrypt dependency to hash, salt and store the encrypted password.
