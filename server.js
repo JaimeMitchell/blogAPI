@@ -23,7 +23,8 @@ app.use(helmet())
 
 
 //set up the LOCALHOST PORT 
-const PORT = 3000
+// process.env.PORT makes sure it runs on Heroku FIRST, before going local.
+const PORT = process.env.PORT || 3000
 
 // app.use mounts the middleware functions which these routes hold. These are the trains that enter Grand Central station with their goods.
 app.use('/users', userRouter)
