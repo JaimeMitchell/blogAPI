@@ -36,9 +36,9 @@ There are distinct routes to create, read, update and delete users' blogs.
 9. morgan
 
 ## Env
-MONGODB_URI
-SECRET_KEY
-
+- MONGODB_URI
+- SECRET_KEY
+- PORT=
 ## Endpoints,Parameters,Schema
 ### CRUD:
 3 routers and 2 schemas on server side: 

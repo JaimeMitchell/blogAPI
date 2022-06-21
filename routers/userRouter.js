@@ -102,7 +102,7 @@ router.put('/:id', async (req, res) => {
     const id = req.params.id
     const newUsersData = req.body
     try {
-        //find user by id
+        //????find user by id ASK ABE????
         await userModel.findByIdAndUpdate(id, newUsersData, { new: true })
         res.status(200).json({ msg: 'user was updated' })
     }
