@@ -82,7 +82,7 @@ created_at:
         type: Date,
         default: Date.now()
 
-#### models/blogSchema.js
+### models/blogSchema.js
  created_by:
         type: String,
         required: true
