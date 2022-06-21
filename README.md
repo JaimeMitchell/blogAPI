@@ -104,7 +104,7 @@ created_at:
 
 
 ## General Loading Instructions
-1. Run 'nodemon server.js' in terminal to start app
+1. Run 'nodemon server.js' in terminal to start app OR open Heroku app: https://jaimeblogapi.herokuapp.com/
 2. Run postman to Create, Read, Update and Delete all Users and individual User blogs by entering User's JWT in Postman's headers. Key: x-auth-token Value: the JWT token provided when user is created.
 
 ### USER routes SERVER
