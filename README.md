@@ -51,7 +51,7 @@ There are distinct routes to create, read, update and delete users' blogs.
 
 ## Schema:
 ### Files:
-#### models/userSchema.js
+### models/userSchema.js
 username:
         type: String,
         required: true
