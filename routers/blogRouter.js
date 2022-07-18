@@ -28,8 +28,8 @@ router.post('/', authMiddleware, async (req, res) => {
     const blogData = req.body // gets the data from the request
     //What does this do and how does it work?
     blogData.user = req.user.id
-    blogData.private=false
-    blogData.created_by= req.user.id
+    blogData.private = false
+    blogData.created_by = req.user.id
 
     console.log(blogData);
     try {
