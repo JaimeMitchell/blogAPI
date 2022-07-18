@@ -1,4 +1,4 @@
-//this produces the token in POSTMAN.
+//this produces the the user's webtoken.
 const jwt = require('jsonwebtoken')
 
 module.exports = (req, res, next) => {
@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
     // IF WE HAVE A TOKEN PROCESS IT USING SECRET_KEY USING DOTENV (.env file)
     try {
         const decoded = jwt.verify(token, process.env.SECRET_KEY)
-
+        req.user = decoded
         console.log(decoded)
 
         next()

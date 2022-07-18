@@ -2,18 +2,16 @@
 
 // SET UP EXPRESS
 const express = require('express')
-// SET UP EXPRESS-VALIDATOR NPM
 
-//
 const router = express.Router()
-//
+// SET UP EXPRESS-VALIDATOR NPM
 const { check, validationResult } = require('express-validator')
 // SET UP PASSWORD ENCRYPTION NPM
 const bcrypt = require('bcrypt')
 // SET UP https://jwt.io/
 const jwt = require('jsonwebtoken')
 // Requiring only the user schema for password validation
-const UserModel = require('../models/userSchema')
+const userModel = require('../models/userSchema')
 
 //Don't fully understand where this posts to and how. Is it the root of Users?
 // EXPRESS-VALIDATION checks/.ismail().notEmpty()
@@ -33,7 +31,7 @@ router.post('/', [
 
     try {//try 'user' value is userSchema's email by finding it in the request body
         // Find the user with the provided email
-        const user = await UserModel.findOne({ email: userData.email })
+        const user = await userModel.findOne({ email: userData.email })
         //if there's no user found return an error message
         if (!user) {
             return res.json('User not found!')
@@ -53,9 +51,9 @@ router.post('/', [
             email: user.email
         }
         //WHAT is jwt.sign?
-        const TOKEN = jwt.sign(payload, process.env.SECRET_KEY) //{ expiresIn: "2 Days" })
+        const TOKEN = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: "2 Days" })
 
-        res.status(200).json({
+        res.status(201).json({
             user: user,
             token: TOKEN
         })

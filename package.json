@@ -20,6 +20,7 @@
   "homepage": "https://github.com/JaimeMitchell/blogAPI#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
     "express": "^4.18.1",

@@ -26,6 +26,8 @@ router.get('/public', authMiddleware, async (req, res) => {
 // CREATE BLOGS
 router.post('/new', authMiddleware, async (req, res) => {
     const blogData = req.body // gets the data from the request
+    //What does this do and how does it work?
+    blogData.user = req.user.id
     console.log(blogData);
     try {
         const blog = await blogModel.create(blogData) // create the blog in the db
@@ -42,6 +44,7 @@ router.post('/new', authMiddleware, async (req, res) => {
 // GET BLOGS BY ID
 router.get('/:id', authMiddleware, async (req, res) => {
     const id = req.params.id
+    console.log(req.user);
 
     try {
         const blog = await blogModel.findById(id)
@@ -49,7 +52,7 @@ router.get('/:id', authMiddleware, async (req, res) => {
     } catch (error) {
         console.error(error)
         res.status(400).json({
-            msg: "Your blog ID can not found"
+            msg: "Your blog ID can not be found :("
         })
     }
 })
@@ -71,9 +74,21 @@ router.put('/:id', authMiddleware, async (req, res) => {
 // DELETE A BLOG. I erased the unused variable const blog, but have it commented out on line 73
 router.delete('/:id', authMiddleware, async (req, res) => {
     const id = req.params.id
+    console.log('FROM DELETE', req.user);
+
     try {
+        //Finds the blog user wants to delete by its id
+        await blogModel.findByIdAndDelete(id)
+        console.log(blogToDelete);
+        console.log(blogToDelete.user._id.toString(), '||', req.user.id);
+        // This checks that the user who created the Blog is the one asking to delete blog, by checking their IDs.
+        if (blogToDelete.user._id.toString() !== req.user.id) {
+            // if they ARE NOT I send error message
+            return res.status(400).json({ msg: 'Not Authorized!' })
+        }
         await blogModel.findByIdAndDelete(id)
         res.status(200).json({ msg: 'Blog was deleted!' })
+
     } catch (error) {
         console.log(error);
     }

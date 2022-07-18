@@ -20,6 +20,10 @@ const blogSchema = mongoose.Schema({
     created_at: {
         type: Date,
         date: Date.now()
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
     }
 })
 

@@ -10,22 +10,7 @@ const userSchema = mongoose.Schema({
                 required: true,
                 unique: true
         },
-        birthday: {
-                day: {
-                        type: Number
-                },
-                month: {
-                        type: Number
-                },
-                year: {
-                        type: Number
-                },
-        },
-        age: {
-                type: Number
 
-
-        },
         password: {
                 type: String,
                 required: true
@@ -33,7 +18,12 @@ const userSchema = mongoose.Schema({
         created_at: {
                 type: Date,
                 default: Date.now()
+        },
+        //This was added in another lesson. Get clarification on Monday.
+        user: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User'
         }
 })
 
-module.exports = mongoose.model('users', userSchema)
+module.exports = mongoose.model('User', userSchema)
