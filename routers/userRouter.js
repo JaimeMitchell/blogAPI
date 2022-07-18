@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 })
 
 // ??? CREATE OR REGISTER A NEW USER, Why is .notEmpty producing an error message. The logic seems reversed and incorrect with all of these checks.
-router.post('/new', [
+router.post('/', [
     check('username', 'username is required from MIDDLEWARE').notEmpty(),
     check('email', 'Incorrect Email from MIDDLEWARE').isEmail(),
     check('password', 'Enter an email').notEmpty(),

@@ -24,10 +24,13 @@ router.get('/public', authMiddleware, async (req, res) => {
     }
 })
 // CREATE BLOGS
-router.post('/new', authMiddleware, async (req, res) => {
+router.post('/', authMiddleware, async (req, res) => {
     const blogData = req.body // gets the data from the request
     //What does this do and how does it work?
     blogData.user = req.user.id
+    blogData.private=false
+    blogData.created_by= req.user.id
+
     console.log(blogData);
     try {
         const blog = await blogModel.create(blogData) // create the blog in the db
@@ -78,7 +81,7 @@ router.delete('/:id', authMiddleware, async (req, res) => {
 
     try {
         //Finds the blog user wants to delete by its id
-        await blogModel.findByIdAndDelete(id)
+        const blogToDelete = await blogModel.findByIdAndDelete(id)
         console.log(blogToDelete);
         console.log(blogToDelete.user._id.toString(), '||', req.user.id);
         // This checks that the user who created the Blog is the one asking to delete blog, by checking their IDs.
