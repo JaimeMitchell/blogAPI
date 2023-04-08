@@ -1,6 +1,6 @@
 # blogAPI
 
-Deployed on Heroku:
+Deployed on Netlify:
 https://62d9a066ed70b700b9fad3f7--jaimeblogapi.netlify.app/
 
 # Project Description
