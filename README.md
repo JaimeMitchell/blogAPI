@@ -37,12 +37,6 @@ There are distinct routes to create, read, update and delete users' blogs.
 8. mongoose
 9. morgan
 
-## Env
-
-- MONGODB_URI
-- SECRET_KEY
-- PORT=
-
 ## Endpoints,Parameters,Schema
 
 ### CRUD:
@@ -162,6 +156,5 @@ date: Date.now()
 
 - Mongoose/MongoDB config: /config/mongoConfig.js --> Require 'mongoose' and connect to and process it using the .env file's MONGODB_URI link.
   (Make sure to list .env in the .gitignore file to hide MongoDB password!!!)
-- JWT: /middleware/authMiddleware.js --> Require 'jsonwebtoken', verify and process it using .env's SECRET_KEY.
-  (Make sure to list .env in the .gitignore file to hide SECRET_KEY!!!)
+- JWT: /middleware/authMiddleware.js --> Require 'jsonwebtoken', verify and process it using SECRET_KEY.
   This get's the token from the header in postman and matches/verifies token sent. Error messages send if either token was not created or is not valid (tampered with, doesn't match or expires)
