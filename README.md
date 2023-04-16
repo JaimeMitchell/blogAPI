@@ -22,7 +22,6 @@ There are distinct routes to create, read, update and delete users' blogs.
 3. MongoDB
 4. Mongoose
 5. Postman
-6. Github
 7. Heroku
 8. VSC as my editor
 
