@@ -36,7 +36,7 @@ router.post('/', [
             return res.json('User not found!')
         }
 
-        // Compare the plain text password to hashed password if there's a match BTWN AuthRoute's req body and it's Schema's email with req body in it, not sure what makes one hashed and the other plain text.
+        // Compare the plain text password to hashed password if there's a match BTWN AuthRoute's req body and it's Schema's email with req body in it.
         const isMatch = await bcrypt.compare(userData.password, user.password)
         // if bcrypt comparison is not a match then tell them
         if (!isMatch) {
