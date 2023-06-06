@@ -13,7 +13,6 @@ const jwt = require('jsonwebtoken')
 // Requiring only the user schema for password validation
 const userModel = require('../models/userSchema')
 
-//Don't fully understand where this posts to and how. Is it the root of Users?
 // EXPRESS-VALIDATION checks/.ismail().notEmpty()
 router.post('/', [
 
@@ -45,7 +44,6 @@ router.post('/', [
         }
 
         // Create a new JWT Token
-        //Nope don't understand what's happening here. Need to watch a youtube...
         const payload = {
             id: user._id,
             email: user.email
